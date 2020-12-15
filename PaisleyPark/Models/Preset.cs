@@ -33,6 +33,9 @@ namespace PaisleyPark.Models
         public event PropertyChangedEventHandler PropertyChanged;
 #pragma warning restore 67
 
+        /// <summary>
+        /// based on PunishedPineapple's WaymarkPresetPlugin: https://github.com/PunishedPineapple/WaymarkPresetPlugin/blob/master/WaymarkPresetPlugin/WaymarkPreset.cs
+        /// </summary>
         public Preset Parse(byte[] rawData) {
             if (rawData.Length != 104) {
                 throw new Exception("Unexpected data length in WaymarkPreset.Parse");

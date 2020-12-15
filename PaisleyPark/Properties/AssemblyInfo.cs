@@ -5,7 +5,7 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PaisleyPark")]
+[assembly: AssemblyTitle("PaisleyParkR")]
 [assembly: AssemblyDescription("Paisley Park Waymark Preset Tool")]
 [assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyCompany("LeonBlade")]

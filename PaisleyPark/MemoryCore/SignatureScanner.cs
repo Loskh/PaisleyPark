@@ -12,7 +12,7 @@ namespace PaisleyPark.MemoryCore
 #pragma warning disable SA1011
 
 	/// <summary>
-	/// based on Dalamud's signature scanner: https://github.com/goatcorp/Dalamud/blob/master/Dalamud/Game/SigScanner.cs.
+	/// based on Anamnesis's signature scanner: https://github.com/imchillin/Anamnesis/blob/master/Anamnesis/Core/Memory/SignatureScanner.cs
 	/// </summary>
 	public sealed class SignatureScanner
 	{

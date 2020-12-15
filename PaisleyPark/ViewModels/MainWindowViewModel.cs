@@ -28,7 +28,7 @@ namespace PaisleyPark.ViewModels
         public Settings UserSettings { get; set; }
         public Preset CurrentPreset { get; set; }
         public string CurrentSlot { get; set; }
-        public string WindowTitle { get; set; } = "Paisley Park ÄÚ²¿Èº°æ ";
+        public string WindowTitle { get; set; } = "Paisley Park R";
         public bool IsServerStarted { get; set; } = false;
         public bool IsServerStopped { get => !IsServerStarted; }
         private static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
