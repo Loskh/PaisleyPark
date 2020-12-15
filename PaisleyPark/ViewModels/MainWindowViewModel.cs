@@ -663,7 +663,7 @@ namespace PaisleyPark.ViewModels
                 var mapID = Offsets.MapID;
                 CurrentPreset.MapID = MemoryService.Read<UInt16>(mapID);
                 if (CurrentPreset.MapID == 0) {
-                    MessageBox.Show("Current MapID is 0.", "Paisley Park", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Current MapID is 0.\nWaymark Preset without MapID is invalid", "Paisley Park", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
             }

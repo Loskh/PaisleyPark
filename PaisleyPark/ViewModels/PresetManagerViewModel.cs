@@ -127,7 +127,7 @@ namespace PaisleyPark.ViewModels
             // Can't do unless game is loaded.
             //if (!CheckCanDo())
             //    return;
-            var GameReady = (Application.Current.MainWindow == null && Application.Current.MainWindow.IsInitialized);
+            var GameReady = (Application.Current.MainWindow != null && Application.Current.MainWindow.IsInitialized);
             try {
                 if (SelectedItem == null)
                     return;
