@@ -26,6 +26,7 @@ namespace PaisleyPark.Common
             {
                 // Bind the param to RESTWaymark.
                 var waymarks = this.Bind<RESTWaymark>();
+
                 // Get event to publish to.
                 var e = MainWindowViewModel.EventAggregator.GetEvent<WaymarkEvent>();
                 // Publish the waymarks from the request.

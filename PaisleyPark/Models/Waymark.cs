@@ -30,7 +30,7 @@ namespace PaisleyPark.Models
 		/// <summary>
 		/// Active state of the Waymark.
 		/// </summary>
-		public bool Active { get; set; }
+		public bool Active { get; set; } = false;
 
 		public override bool Equals(object obj)
 		{
@@ -41,6 +41,14 @@ namespace PaisleyPark.Models
 		}
 
 		public override int GetHashCode() => X.GetHashCode() & Y.GetHashCode() & Z.GetHashCode() & ID.GetHashCode() & Active.GetHashCode();
+
+		public Waymark() {
+			X = 0.0f;
+			Y = 0.0f;
+			Z = 0.0f;
+			ID = 0;
+			Active = false;
+		}
 
 		/// <summary>
 		/// PropertyChanged event handler for this model.

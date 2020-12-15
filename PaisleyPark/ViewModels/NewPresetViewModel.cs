@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using PaisleyPark.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 using System.Windows;
 using System.Windows.Input;

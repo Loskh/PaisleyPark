@@ -10,6 +10,7 @@ namespace PaisleyPark.Models
 		/// <summary>
 		/// Waymark coordinates in game.
 		/// </summary>
+		public ushort MapID { get; set; }
 		public Waymark A { get; set; }
 		public Waymark B { get; set; }
 		public Waymark C { get; set; }

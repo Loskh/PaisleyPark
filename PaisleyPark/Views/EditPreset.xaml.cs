@@ -22,6 +22,7 @@ namespace PaisleyPark.Views
         public EditPreset()
         {
             InitializeComponent();
+
         }
     }
 }
