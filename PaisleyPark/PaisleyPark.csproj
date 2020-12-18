@@ -107,6 +107,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddressService\SwitchParser.cs" />
+    <Compile Include="AddressService\WayMarkSlot.cs" />
     <Compile Include="Common\BrowserBehavior.cs" />
     <Compile Include="Common\ExtensionMethods.cs" />
     <Compile Include="Common\GameMemoryUpdateEvent.cs" />
@@ -116,10 +118,11 @@
     <Compile Include="Common\ProgressUpdate.cs" />
     <Compile Include="Common\WaymarkEvent.cs" />
     <Compile Include="Common\WaymarkNancyModule.cs" />
+    <Compile Include="MemoryCore\ExtensionMethods.cs" />
     <Compile Include="MemoryCore\MemoryService.cs" />
     <Compile Include="MemoryCore\SignatureScanner.cs" />
     <Compile Include="Models\Memory.cs" />
-    <Compile Include="Models\Offsets.cs" />
+    <Compile Include="AddressService\Offsets.cs" />
     <Compile Include="Models\Preset.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\Waymark.cs" />

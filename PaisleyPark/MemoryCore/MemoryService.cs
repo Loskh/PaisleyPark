@@ -19,6 +19,7 @@ namespace PaisleyPark.MemoryCore
         private readonly Dictionary<string, IntPtr> modules = new Dictionary<string, IntPtr>();
 
         public static IntPtr Handle { get; private set; }
+        public static IntPtr BaseAddress { get; private set; }
         public static SignatureScanner Scanner { get; private set; }
         public static Process Process { get; private set; }
         public static bool IsProcessAlive { get; private set; }
@@ -184,7 +185,7 @@ namespace PaisleyPark.MemoryCore
         /// </summary>
         public void OpenProcess(Process process) {
             Process = process;
-
+            BaseAddress = Process.MainModule.BaseAddress;
             if (!Process.Responding)
                 throw new Exception("Target process id not responding");
 
