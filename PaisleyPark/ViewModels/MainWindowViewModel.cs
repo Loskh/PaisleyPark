@@ -23,13 +23,17 @@ namespace PaisleyPark.ViewModels
     {
         public static IEventAggregator EventAggregator { get; private set; }
         //private NhaamaProcess GameProcess { get; set; }
-        private MemoryService MemoryService { get; set; } 
+        private MemoryService MemoryService { get; set; }
         private BackgroundWorker Worker;
         public static Memory GameMemory { get; set; } = new Memory();
         public Settings UserSettings { get; set; }
         public Preset CurrentPreset { get; set; }
         public string CurrentSlot { get; set; }
+#if _NGA
+        public string WindowTitle { get; set; } = "Paisley Park Lite";
+#else
         public string WindowTitle { get; set; } = "Paisley Park R";
+#endif
         public bool IsServerStarted { get; set; } = false;
         public bool IsServerStopped { get => !IsServerStarted; }
         private static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
@@ -48,6 +52,7 @@ namespace PaisleyPark.ViewModels
         // Memory addresses for our injection.
         public ulong _newmem { get; private set; }
         public ulong _inject { get; private set; }
+
 
 #pragma warning restore IDE1006 // Naming Styles
 
@@ -237,8 +242,12 @@ namespace PaisleyPark.ViewModels
 
             logger.Info("Starting server...");
             // Check autostart and start the HTTP server if it's true.
+#if _NGA
+
+#else
             if (UserSettings.HTTPAutoStart)
                 OnStartServer();
+#endif
 
             return true;
         }
@@ -679,7 +688,7 @@ namespace PaisleyPark.ViewModels
                     byte[] importdata = new byte[104];
                     importdata = CurrentPreset.ConstructGamePreset();
                     IntPtr SlotOffset;
-                    switch(CurrentSlot){
+                    switch (CurrentSlot) {
                         case "Slot1": {
                                 SlotOffset = Offsets.Slot1;
                                 break;

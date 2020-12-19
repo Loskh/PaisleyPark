@@ -1,11 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Target Name="ZipBuild" AfterTargets="Build">
+  <Target Name="ZipBuild" AfterTargets="Build" Condition="'$(ConfigurationName)'=='NGARelease' ">
     <ItemGroup>
-      <ZipFiles Include="$(OutputPath)PaisleyPark.exe" />
+      <ZipFiles Include="$(OutputPath)PaisleyParkLite.exe" />
       <ZipFiles Include="$(OutputPath)NLog.config" />
       <!--<ZipFiles Include="$(OutputPath)PaisleyParkUpdater.exe" />-->
     </ItemGroup>
-    <Zip Files="@(ZipFiles)" WorkingDirectory="$(OutputPath)" ZipFileName="$(OutputPath)PaisleyPark.zip" />
+    <Zip Files="@(ZipFiles)" WorkingDirectory="$(OutputPath)" ZipFileName="$(OutputPath)PaisleyParkLite.zip" />
   </Target>
+  <Target Name="ZipBuild" AfterTargets="Build" Condition="'$(ConfigurationName)'=='Release' ">
+    <ItemGroup>
+      <ZipFiles Include="$(OutputPath)PaisleyParkR.exe" />
+      <ZipFiles Include="$(OutputPath)NLog.config" />
+      <!--<ZipFiles Include="$(OutputPath)PaisleyParkUpdater.exe" />-->
+    </ItemGroup>
+    <Zip Files="@(ZipFiles)" WorkingDirectory="$(OutputPath)" ZipFileName="$(OutputPath)PaisleyParkR.zip" />
+  </Target>
+
 </Project>

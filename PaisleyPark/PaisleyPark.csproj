@@ -18,6 +18,7 @@
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
         None
     </ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -30,7 +31,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -66,12 +66,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;_NGA</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -85,6 +86,28 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NGARelease|AnyCPU'">
+    <OutputPath>bin\NGARelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NGARelease|x64'">
+    <OutputPath>bin\x64\NGARelease\</OutputPath>
+    <DefineConstants>TRACE;_NGA</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -278,4 +301,27 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)Bundle.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if $(ConfigurationName) == NGARelease (
+copy "$(SolutionDir)\PaisleyPark\Views\MainWindow_Lite.xaml" "$(SolutionDir)\PaisleyPark\Views\MainWindow.xaml"
+echo "NGA Release"
+)
+if $(ConfigurationName) == Release (
+copy "$(SolutionDir)\PaisleyPark\Views\MainWindow_Full.xaml" "$(SolutionDir)\PaisleyPark\Views\MainWindow.xaml"
+echo "Full Release"
+)
+if $(ConfigurationName) == Debug (
+copy "$(SolutionDir)\PaisleyPark\Views\MainWindow_Full.xaml" "$(SolutionDir)\PaisleyPark\Views\MainWindow.xaml"
+echo "Debug"
+)</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(SolutionDir)\PaisleyPark\Views\MainWindow_Full.xaml" "$(SolutionDir)\PaisleyPark\Views\MainWindow.xaml"
+if $(ConfigurationName) == NGARelease (
+move "$(TargetDir)\PaisleyPark.exe" "$(TargetDir)\PaisleyParkLite.exe" 
+)
+if $(ConfigurationName) == Release (
+move "$(TargetDir)\PaisleyPark.exe" "$(TargetDir)\PaisleyParkR.exe" 
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>
