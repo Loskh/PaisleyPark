@@ -13,6 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Setup Nuget
+      uses: nuget/setup-nuget@v1
+      with:
+        nuget-version: 'latest'
+    - name: Restore Nuget Packages
+      run: nuget restore PaisleyPark.sln
     - name: Define VERSION
       run: |
         $env:COMMIT = $env:GITHUB_SHA.Substring(0, 7)
