@@ -35,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
           name: PaisleyParkR-artifact
-          path: PaisleyPark\bin\x64\Release
+          path: PaisleyPark\bin\Release
