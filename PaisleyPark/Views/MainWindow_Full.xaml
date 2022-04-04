@@ -15,7 +15,7 @@
         SizeToContent="Height"
         Top="{Binding UserSettings.Top, Mode=TwoWay}"
         Left="{Binding UserSettings.Left, Mode=TwoWay}"
-        Height="161.046" 
+        Height="242.929" 
         Width="389.608"
         ResizeMode="CanMinimize">
 
@@ -29,7 +29,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <StackPanel Margin="10,10,10,9">
+    <StackPanel Margin="10,10,10,0" Height="203" VerticalAlignment="Top">
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -50,18 +50,18 @@
         </Grid>
 
 
-        <!--<Button Content="Load" Margin="0,5" Command="{Binding LoadPresetCommand}"/>-->
+        <Button Content="Load" Margin="0,5" Command="{Binding LoadPresetCommand}"/>
         <Button Content="Load To Slot" Margin="0,5" Command="{Binding LoadPresetToSlotCommand}"/>
-        <GroupBox Header="Settings" Height="58">
-            <StackPanel Orientation="Horizontal" Height="25" VerticalAlignment="Top" Margin="0,4,0,0">
+        <GroupBox Header="Settings" Height="97">
+            <StackPanel Orientation="Horizontal" Height="84" VerticalAlignment="Top">
                 <StackPanel Orientation="Vertical">
                     <Label Content="Slot" VerticalAlignment="Center" Margin="0,0,5,0" Height="26"/>
-                    <!--<Label Content="Delay" VerticalAlignment="Center" Margin="0,0,5,0" Height="26"/>-->
-                    <!--<Label Content="Port" VerticalAlignment="Center" Margin="0,0,5,0"/>-->
+                    <Label Content="Delay" VerticalAlignment="Center" Margin="0,0,5,0" Height="26"/>
+                    <Label Content="Port" VerticalAlignment="Center" Margin="0,0,5,0"/>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Height="25" VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical" Height="74" VerticalAlignment="Top">
                     <StackPanel Height="26" Orientation="Horizontal">
-                        <ComboBox VerticalAlignment="Top" HorizontalAlignment="Left"
+                        <ComboBox VerticalAlignment="Top" HorizontalAlignment="Left" 
                         SelectedItem="{Binding CurrentSlot, Mode=OneWayToSource}" Width="59" RenderTransformOrigin="-0.663,0.502" SelectedIndex="0">
                             <System:String>Slot1</System:String>
                             <System:String>Slot2</System:String>
@@ -71,7 +71,7 @@
                         </ComboBox>
                     </StackPanel>
 
-                    <!--<StackPanel Height="26" Orientation="Horizontal">
+                    <StackPanel Height="26" Orientation="Horizontal">
                         <p:NumericTextBox TextWrapping="Wrap" VerticalAlignment="Center" ToolTip="Delay in milliseconds for each waymark to be placed."
                                       Text="{Binding UserSettings.PlacementDelay, UpdateSourceTrigger=PropertyChanged}" Width="60"/>
                     </StackPanel>
@@ -82,21 +82,21 @@
                         <Button Content="Start" Margin="10,2,0,4" Padding="10,2" Command="{Binding StartServerCommand}"/>
                         <Button Content="Stop" Margin="10,2,0,4" Padding="10,2" Command="{Binding StopServerCommand}"/>
                         <CheckBox IsChecked="{Binding UserSettings.HTTPAutoStart}" Margin="10,2,0,4" VerticalAlignment="Center" ToolTip="Autostart server" />
-                    </StackPanel>-->
+                    </StackPanel>
 
                 </StackPanel>
 
             </StackPanel>
 
         </GroupBox>
-        <!--<Grid Height="35">
+        <Grid Height="35">
             <CheckBox IsChecked="{Binding UserSettings.LocalOnly}" Content="Local Only" VerticalAlignment="Center" Margin="0,7" Height="21" />
             <Label HorizontalAlignment="Right" Margin="0,4,0,0" Height="24" VerticalAlignment="Top">
                 <Hyperlink Command="{Binding DiscordCommand}">
                     <Run Text="Join the Discord"/>
                 </Hyperlink>
             </Label>
-        </Grid>-->
+        </Grid>
 
 
     </StackPanel>

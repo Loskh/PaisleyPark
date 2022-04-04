@@ -299,14 +299,19 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)Bundle.targets" />
   <PropertyGroup>
     <PreBuildEvent>if $(ConfigurationName) == NGARelease (
+del $(SolutionDir)\PaisleyPark\Views\MainWindow.xaml
 copy "$(SolutionDir)\PaisleyPark\Views\MainWindow_Lite.xaml" "$(SolutionDir)\PaisleyPark\Views\MainWindow.xaml"
 echo "NGA Release"
 )
 if $(ConfigurationName) == Release (
+del $(SolutionDir)\PaisleyPark\Views\MainWindow.xaml
 copy "$(SolutionDir)\PaisleyPark\Views\MainWindow_Full.xaml" "$(SolutionDir)\PaisleyPark\Views\MainWindow.xaml"
 echo "Full Release"
 )

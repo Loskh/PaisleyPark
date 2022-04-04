@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using PaisleyPark.Address;
 using PaisleyPark.Common;
+using PaisleyPark.MemoryCore;
 using PaisleyPark.Models;
 using PaisleyPark.Views;
 using Prism.Commands;
@@ -22,6 +24,8 @@ namespace PaisleyPark.ViewModels
         public ICommand EditCommand { get; private set; }
         public ICommand ImportCommand { get; private set; }
         public ICommand ExportCommand { get; private set; }
+
+        public Offsets Offsets;
 
         public bool DialogResult { get; private set; }
         private Memory GameMemory;
@@ -95,6 +99,40 @@ namespace PaisleyPark.ViewModels
                         p.Two = GameMemory.Two;
                         p.Three = GameMemory.Three;
                         p.Four = GameMemory.Four;
+                    }
+
+                    if (vm.UseSlotWaymarks) {
+                        byte[] importdata = new byte[104];
+                        //importdata = CurrentPreset.ConstructGamePreset();
+                        IntPtr SlotOffset;
+                        switch (vm.CurrentSlot) {
+                            case "Slot1": {
+                                    SlotOffset = Offsets.Slot1;
+                                    break;
+                                }
+                            case "Slot2": {
+                                    SlotOffset = Offsets.Slot2;
+                                    break;
+                                }
+                            case "Slot3": {
+                                    SlotOffset = Offsets.Slot3;
+                                    break;
+                                }
+                            case "Slot4": {
+                                    SlotOffset = Offsets.Slot4;
+                                    break;
+                                }
+                            case "Slot5": {
+                                    SlotOffset = Offsets.Slot5;
+                                    break;
+                                }
+                            default: {
+                                    SlotOffset = Offsets.Slot1;
+                                    break;
+                                }
+                        }
+                        MemoryService.Read(SlotOffset, importdata);
+                        p.Parse(importdata);
                     }
 
                     // Add the preset.

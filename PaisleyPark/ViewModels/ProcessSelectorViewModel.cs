@@ -66,8 +66,8 @@ namespace PaisleyPark.ViewModels
 			// Pull view model from window.
 			var vm = win.DataContext as PresetManagerViewModel;
 
-			// Populate the presets with our current presets as a new instance.
-			vm.Presets = new ObservableCollection<Preset>(settings.Presets);
+            // Populate the presets with our current presets as a new instance.
+            vm.Presets = new ObservableCollection<Preset>(settings.Presets);
 
 			// Check if we're saving changes.
 			if (win.ShowDialog() == true)

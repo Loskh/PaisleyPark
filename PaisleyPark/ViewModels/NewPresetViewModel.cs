@@ -10,6 +10,8 @@ namespace PaisleyPark.ViewModels
     {
 		public string Name              { get; set; }
 		public bool UseCurrentWaymarks  { get; set; } = true;
+		public bool UseSlotWaymarks		{ get; set; } = false;
+		public string CurrentSlot		{ get; set; }	
 		public bool? DialogResult       { get; private set; }
 
 		public ICommand CreateCommand   { get; private set; }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28621.142
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaisleyPark", "PaisleyPark\PaisleyPark.csproj", "{80C7757C-B3D3-4E52-9DD8-373DE51AB450}"
 	ProjectSection(ProjectDependencies) = postProject

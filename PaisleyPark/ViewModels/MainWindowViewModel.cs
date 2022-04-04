@@ -660,20 +660,26 @@ namespace PaisleyPark.ViewModels
             //Kernel32.CloseHandle(threadHandle);
         }
 
-
-
         private void LoadPresetToSlot() {
             // Ensure we have a preset selected.
             if (CurrentPreset == null)
                 return;
             if (CurrentSlot == null)
                 return;
+
+            if (CurrentPreset.MapID > 1000) {
+                var ffxiv = MemoryService.Process.MainModule.BaseAddress;
+                var mapID = MemoryService.Read<UInt16>(Offsets.MapID);
+                MessageBox.Show($"The MapID in Preset is {CurrentPreset.MapID}\nIt seems like invalid and may causes game carsh.\n Use current map id:{mapID} instead.", "Paisley Park", MessageBoxButton.OK, MessageBoxImage.Information);
+                CurrentPreset.MapID = mapID;
+            }
+
             if (CurrentPreset.MapID == 0) {
                 var ffxiv = MemoryService.Process.MainModule.BaseAddress;
                 var mapID = Offsets.MapID;
                 CurrentPreset.MapID = MemoryService.Read<UInt16>(mapID);
                 if (CurrentPreset.MapID == 0) {
-                    MessageBox.Show("Current MapID is 0.\nWaymark Preset without MapID is invalid", "Paisley Park", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"Current MapID is {CurrentPreset.MapID}.\nIt can not be writed to WayMark Slot.", "Paisley Park", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
             }
@@ -848,6 +854,7 @@ namespace PaisleyPark.ViewModels
 
             // Populate the presets with our current presets as a new instance.
             vm.Presets = new System.Collections.ObjectModel.ObservableCollection<Preset>(UserSettings.Presets);
+            vm.Offsets = Offsets;
 
             // Check if we're saving changes.
             if (win.ShowDialog() == true) {

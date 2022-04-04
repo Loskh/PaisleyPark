@@ -40,61 +40,68 @@ namespace PaisleyPark.Models
             if (rawData.Length != 104) {
                 throw new Exception("Unexpected data length in WaymarkPreset.Parse");
             }
-            Preset preset = new Preset();
+            //Preset preset = new Preset();
 
-            preset.A.X = BitConverter.ToInt32(rawData, 0) / 1000.0f;
-            preset.A.Y = BitConverter.ToInt32(rawData, 4) / 1000.0f;
-            preset.A.Z = BitConverter.ToInt32(rawData, 8) / 1000.0f;
-            preset.A.Active = (rawData[96] & 0b00000001) > 0;
-            preset.A.ID = (WaymarkID)0;
+            var p = this;
+            this.A=new Waymark();
+            this.A.X = BitConverter.ToInt32(rawData, 0) / 1000.0f;
+            this.A.Y = BitConverter.ToInt32(rawData, 4) / 1000.0f;
+            this.A.Z = BitConverter.ToInt32(rawData, 8) / 1000.0f;
+            this.A.Active = (rawData[96] & 0b00000001) > 0;
+            this.A.ID = (WaymarkID)0;
 
-            preset.B.X = BitConverter.ToInt32(rawData, 12) / 1000.0f;
-            preset.B.Y = BitConverter.ToInt32(rawData, 16) / 1000.0f;
-            preset.B.Z = BitConverter.ToInt32(rawData, 20) / 1000.0f;
-            preset.B.Active = (rawData[96] & 0b00000010) > 0;
-            preset.B.ID = (WaymarkID)1;
+            this.B = new Waymark();
+            this.B.X = BitConverter.ToInt32(rawData, 12) / 1000.0f;
+            this.B.Y = BitConverter.ToInt32(rawData, 16) / 1000.0f;
+            this.B.Z = BitConverter.ToInt32(rawData, 20) / 1000.0f;
+            this.B.Active = (rawData[96] & 0b00000010) > 0;
+            this.B.ID = (WaymarkID)1;
 
-            preset.C.X = BitConverter.ToInt32(rawData, 24) / 1000.0f;
-            preset.C.Y = BitConverter.ToInt32(rawData, 28) / 1000.0f;
-            preset.C.Z = BitConverter.ToInt32(rawData, 32) / 1000.0f;
-            preset.C.Active = (rawData[96] & 0b00000100) > 0;
-            preset.C.ID = (WaymarkID)2;
+            this.C = new Waymark();
+            this.C.X = BitConverter.ToInt32(rawData, 24) / 1000.0f;
+            this.C.Y = BitConverter.ToInt32(rawData, 28) / 1000.0f;
+            this.C.Z = BitConverter.ToInt32(rawData, 32) / 1000.0f;
+            this.C.Active = (rawData[96] & 0b00000100) > 0;
+            this.C.ID = (WaymarkID)2;
 
-            preset.D.X = BitConverter.ToInt32(rawData, 36) / 1000.0f;
-            preset.D.Y = BitConverter.ToInt32(rawData, 40) / 1000.0f;
-            preset.D.Z = BitConverter.ToInt32(rawData, 44) / 1000.0f;
-            preset.D.Active = (rawData[96] & 0b00001000) > 0;
-            preset.D.ID = (WaymarkID)3;
+            this.D = new Waymark();
+            this.D.X = BitConverter.ToInt32(rawData, 36) / 1000.0f;
+            this.D.Y = BitConverter.ToInt32(rawData, 40) / 1000.0f;
+            this.D.Z = BitConverter.ToInt32(rawData, 44) / 1000.0f;
+            this.D.Active = (rawData[96] & 0b00001000) > 0;
+            this.D.ID = (WaymarkID)3;
 
-            preset.One.X = BitConverter.ToInt32(rawData, 48) / 1000.0f;
-            preset.One.Y = BitConverter.ToInt32(rawData, 52) / 1000.0f;
-            preset.One.Z = BitConverter.ToInt32(rawData, 56) / 1000.0f;
-            preset.One.Active = (rawData[96] & 0b00010000) > 0;
-            preset.One.ID = (WaymarkID)4;
+            this.One = new Waymark();
+            this.One.X = BitConverter.ToInt32(rawData, 48) / 1000.0f;
+            this.One.Y = BitConverter.ToInt32(rawData, 52) / 1000.0f;
+            this.One.Z = BitConverter.ToInt32(rawData, 56) / 1000.0f;
+            this.One.Active = (rawData[96] & 0b00010000) > 0;
+            this.One.ID = (WaymarkID)4;
 
-            preset.Two.X = BitConverter.ToInt32(rawData, 60) / 1000.0f;
-            preset.Two.Y = BitConverter.ToInt32(rawData, 64) / 1000.0f;
-            preset.Two.Z = BitConverter.ToInt32(rawData, 68) / 1000.0f;
-            preset.Two.Active = (rawData[96] & 0b00100000) > 0;
-            preset.Two.ID = (WaymarkID)5;
+            this.Two = new Waymark();
+            this.Two.X = BitConverter.ToInt32(rawData, 60) / 1000.0f;
+            this.Two.Y = BitConverter.ToInt32(rawData, 64) / 1000.0f;
+            this.Two.Z = BitConverter.ToInt32(rawData, 68) / 1000.0f;
+            this.Two.Active = (rawData[96] & 0b00100000) > 0;
+            this.Two.ID = (WaymarkID)5;
 
-            preset.Three.X = BitConverter.ToInt32(rawData, 72) / 1000.0f;
-            preset.Three.Y = BitConverter.ToInt32(rawData, 76) / 1000.0f;
-            preset.Three.Z = BitConverter.ToInt32(rawData, 80) / 1000.0f;
-            preset.Three.Active = (rawData[96] & 0b01000000) > 0;
-            preset.Three.ID = (WaymarkID)6;
+            this.Three = new Waymark();
+            this.Three.X = BitConverter.ToInt32(rawData, 72) / 1000.0f;
+            this.Three.Y = BitConverter.ToInt32(rawData, 76) / 1000.0f;
+            this.Three.Z = BitConverter.ToInt32(rawData, 80) / 1000.0f;
+            this.Three.Active = (rawData[96] & 0b01000000) > 0;
+            this.Three.ID = (WaymarkID)6;
 
-            preset.Four.X = BitConverter.ToInt32(rawData, 84) / 1000.0f;
-            preset.Four.Y = BitConverter.ToInt32(rawData, 88) / 1000.0f;
-            preset.Four.Z = BitConverter.ToInt32(rawData, 92) / 1000.0f;
-            preset.Four.Active = (rawData[96] & 0b10000000) > 0;
-            preset.Four.ID = (WaymarkID)7;
+            this.Four = new Waymark();
+            this.Four.X = BitConverter.ToInt32(rawData, 84) / 1000.0f;
+            this.Four.Y = BitConverter.ToInt32(rawData, 88) / 1000.0f;
+            this.Four.Z = BitConverter.ToInt32(rawData, 92) / 1000.0f;
+            this.Four.Active = (rawData[96] & 0b10000000) > 0;
+            this.Four.ID = (WaymarkID)7;
 
-            preset.MapID = BitConverter.ToUInt16(rawData, 98);
-
+            this.MapID = BitConverter.ToUInt16(rawData, 98);
             //preset.Time = DateTimeOffset.FromUnixTimeSeconds(BitConverter.ToInt32(rawData, 100));
-
-            return preset;
+            return p;
         }
 
         public byte[] ConstructGamePreset() {

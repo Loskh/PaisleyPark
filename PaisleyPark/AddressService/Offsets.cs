@@ -24,7 +24,9 @@ namespace PaisleyPark.Address
             MemoryService = memoryService;
             WayMarkSlot = new WayMarkSlot(MemoryService);
 
-            MapID = MemoryService.Scanner.GetStaticAddressFromSig("48 8D 0D ?? ?? ?? ?? 45 8B CD 48 89 7C 24 ??") + 0x05C0 + 0x06;
+            //MapID = MemoryService.Scanner.GetStaticAddressFromSig("48 8D 0D ?? ?? ?? ?? 45 8B CD 48 89 7C 24 ??") + 0x05C0 + 0x06;
+            var mapIDOffset = MemoryService.Read<UInt16>(MemoryService.Scanner.ScanText("66 89 81 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 44 8B CF")+3);
+            MapID = MemoryService.Scanner.GetStaticAddressFromSig("48 8D 0D ?? ?? ?? ?? 0F B6 55 ??") + mapIDOffset;
             Waymarks = MemoryService.Scanner.GetStaticAddressFromSig("48 8B 94 24 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? 41 B0 01") + 432;
         }
     }
